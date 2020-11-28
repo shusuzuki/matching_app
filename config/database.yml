@@ -91,9 +91,3 @@ production:
   database: <%= Rails.application.credentials.rds[:database] %>
   username: <%= Rails.application.credentials.rds[:username] %>
   password: <%= Rails.application.credentials.rds[:password] %>
-
-rds:
-  host: database-1.cvz19illzhke.ap-northeast-1.rds.amazonaws.com
-  database: mydb
-  username: postgres
-  password: s1593575

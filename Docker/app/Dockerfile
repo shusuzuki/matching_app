@@ -1,6 +1,6 @@
 FROM ruby:2.5
 
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs vim
 ENV RAILS_ROOT /my_app
 RUN mkdir -p $RAILS_ROOT
 WORKDIR $RAILS_ROOT
