@@ -4,7 +4,7 @@ RSpec.describe "StaticPages_request", type: :request do
   end
 
   describe "GET /home" do
-    it "returns http success" do
+    it "リクエストが成功すること" do
       expect(response).to have_http_status(200)
     end
 
