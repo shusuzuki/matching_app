@@ -11,4 +11,5 @@ AllCops:
       - 'config/spring.rb'
       - 'lib/tasks/*'
       - 'vendor/**/*'
+      - 'config/routes.rb'
       - 'spec/spec_helper.rb'
