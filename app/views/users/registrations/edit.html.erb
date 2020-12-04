@@ -8,6 +8,18 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+  <div class="box-sex">
+    <%= f.label :男性  %>
+    <%= f.radio_button :sex, :man , {required: true} %>
+    <%= f.label :女性  %>
+    <%= f.radio_button :sex, :woman %>
+  </div>
+
+  <div class="box-age">
+    <%= f.label :birth_date, "生年月日を入力" %><br />
+    <%= f.date_select :birth_date , {use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)} %>
+  </div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
