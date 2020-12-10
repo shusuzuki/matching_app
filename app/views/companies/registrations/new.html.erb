@@ -20,11 +20,11 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
       <div class="box-qualification">
-        <%= f.label :qualification, "求める資格は？(必須/複数可)" %><br />
+        <%= f.label :qualification, "求める資格は？(複数可)" %><br />
         <% qualification = ["第一種電気工事士","第二種電気工事士","1級電気工事施工管理技士","2級電気工事施工管理技士",
                             "電気主任技術者","その他"] %>
         <% qualification.each do |q| %><br>
-        <%= f.check_box :qualification , {multiple: true},q,nil %>
+          <%= f.check_box :qualification , {multiple: true},q,nil %>
           <%= f.label :qualification, q %>
         <% end %>
       </div>

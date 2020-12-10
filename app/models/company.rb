@@ -5,7 +5,8 @@ class Company < ApplicationRecord
   validates :email, presence: true, length: { maximum: 30 },
                     format: { with: VALID_EMAIL_REGEX, allow_blank: true },
                     uniqueness: true
-  validates :password, presence: true, length: { minimum: 6, allow_blank: true }
+  validates :password, presence: true, on: :create
+  validates :password, confirmation: true, length: { minimum: 6, allow_blank: true }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

@@ -8,7 +8,7 @@
         <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
       </div>
       <div class="box-email">
-        <%= f.label :email, "メールアドレス" %><br />       
+        <%= f.label :email, "メールアドレス" %><br />
         <%= f.email_field :email, autocomplete: "email" %>
       </div>
       <div class="box-password">
@@ -19,12 +19,22 @@
         <%= f.label :password_confirmation, "パスワード（確認用）" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
+      <div class="box-sex">
+        <%= f.label :男性  %>
+        <%= f.radio_button :sex, :男性, {required: true} %>
+        <%= f.label :女性  %>
+        <%= f.radio_button :sex, :女性 %>
+      </div>
+      <div class="box-age">
+        <%= f.label :birth_date, "生年月日" %><br />
+        <%= f.date_select :birth_date , {use_month_numbers: true,start_year: 1970, end_year: (Time.now.year - 18), default: Date.new(1989, 1, 1)} %>
+      </div>
       <div class="box-qualification">
-        <%= f.label :qualification, "お持ちの資格は？(必須/複数可)" %><br />
+        <%= f.label :qualification, "お持ちの資格は？(複数可)" %><br />
         <% qualification = ["第一種電気工事士","第二種電気工事士","1級電気工事施工管理技士","2級電気工事施工管理技士",
                             "電気主任技術者","その他"] %>
         <% qualification.each do |q| %><br>
-        <%= f.check_box :qualification , {multiple: true},q,nil %>
+          <%= f.check_box :qualification , {multiple: true},q,nil %>
           <%= f.label :qualification, q %>
         <% end %>
       </div>

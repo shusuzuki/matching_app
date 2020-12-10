@@ -1,0 +1,7 @@
+<h1>Companies</h1>
+<p>企業名 : <%= @company.company_name %></p>
+<p>メールアドレス : <%= @company.email %></p>
+<p>求む資格 : <%= @qualification %></p>
+<% if @company.id == current_company.id %>
+  <%= link_to "プロフィールを編集", edit_company_registration_path  %>
+<% end %>

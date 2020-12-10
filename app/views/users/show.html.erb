@@ -1,0 +1,9 @@
+<h1>Users</h1>
+<p>名前 : <%= @user.name %></p>
+<p>メールアドレス : <%= @user.email %></p>
+<p>資格 : <%= @qualification %></p>
+<p>性別 : <%= @user.sex %></p>
+<p>年齢 : <%= @birthday %>歳</p>
+<% if @user.id == current_user.id %>
+  <%= link_to "プロフィールを編集", edit_user_registration_path  %>
+<% end %>

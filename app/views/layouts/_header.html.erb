@@ -17,32 +17,62 @@
             <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
           <% end %>
         </li>
-        <li>
-          <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"       
-              aria-expanded="false">
-              新規登録
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-              <li><%= link_to "個人向け登録",  new_user_registration_path %></li>
-              <li><%= link_to "法人向け登録",  new_company_registration_path  %></li>
-            </ul>
-          </div>
-        </li>
-        <li>
-          <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"       
-              aria-expanded="false">
-              ログイン
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-              <li><%= link_to "個人向けログイン",  new_user_session_path %></li>
-              <li><%= link_to "法人向けログイン",  new_company_session_path %></li>
-            </ul>
-          </div>
-        </li>
+        <% if user_signed_in? %>
+          <li>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"       
+                aria-expanded="false">
+                アカウント
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><%= link_to "マイページ",  current_user %></li>
+                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </div>
+          </li>
+        <% elsif company_signed_in? %>
+          <li>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"       
+                aria-expanded="false">
+                アカウント
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><%= link_to "マイページ",  current_company %></li>
+                <li><%= link_to "ログアウト", destroy_company_session_path, method: :delete %></li>
+              </ul>
+            </div>
+          </li>
+        <% else %>
+          <li>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"       
+                aria-expanded="false">
+                新規登録
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><%= link_to "個人向け登録",  new_user_registration_path %></li>
+                <li><%= link_to "法人向け登録",  new_company_registration_path  %></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"       
+                aria-expanded="false">
+                ログイン
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><%= link_to "個人向けログイン",  new_user_session_path %></li>
+                <li><%= link_to "法人向けログイン",  new_company_session_path %></li>
+              </ul>
+            </div>
+          </li>
+        <% end %>
       </ul>
     </nav>
   </div>
