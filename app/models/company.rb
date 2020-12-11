@@ -7,6 +7,8 @@ class Company < ApplicationRecord
                     uniqueness: true
   validates :password, presence: true, on: :create
   validates :password, confirmation: true, length: { minimum: 6, allow_blank: true }
+  validates :profile, length: { maximum: 50 }
+  has_one_attached :avatar
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

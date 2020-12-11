@@ -13,6 +13,7 @@ RSpec.describe User, type: :model do
     expect(build(:user, name: "a" * 31)).not_to be_valid
     expect(build(:user, email: "a" * 31)).not_to be_valid
     expect(build(:user, password: "a" * 5)).not_to be_valid
+    expect(build(:user, profile: "a" * 51)).not_to be_valid
   end
 
   it "メールアドレスがなければ登録できない" do

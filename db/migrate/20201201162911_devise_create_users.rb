@@ -34,6 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       t.string :name, null: false
       t.text :qualification, array: true, default: []
+      t.text :profile
       t.date :birth_date
       t.integer :sex
       t.timestamps null: false

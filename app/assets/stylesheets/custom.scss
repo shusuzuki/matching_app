@@ -187,11 +187,19 @@ h1 {
   color: #111111;
 }
 
+.box-avater{
+  margin-bottom: 20px;
+}
+
 .box-name{
   margin-bottom: 13px;
 }
 
 .box-email {
+  margin-bottom: 20px;
+}
+
+.box-profile{
   margin-bottom: 20px;
 }
 
@@ -309,4 +317,56 @@ h1 {
 
 .box-newuser a:hover {
   background: #e7e9ec;
+}
+
+/* sidebar */
+
+.img-circle{
+  height: 200px;
+  width: 200px;
+  float: left;
+  margin-right: 30px;
+  margin-top: 25px;
+}
+
+aside {
+  section.user_info {
+    margin-top: 20px;
+  }
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 3em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-top: 30px;
+    }
+  }
+}
+
+.qualification{
+  width: 700px;
+}
+
+.profile{
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 767px){
+  .qualification{
+    width: 200px;
+  }
+  .profile{
+    width: 200px;
+  }
 }

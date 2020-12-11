@@ -7,5 +7,6 @@ FactoryBot.define do
     qualification { "第一種電気工事士" }
     birth_date { "1996-12-27" }
     sex { "男性" }
+    profile { "profile" }
   end
 end

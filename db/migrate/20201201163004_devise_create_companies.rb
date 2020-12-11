@@ -34,6 +34,7 @@ class DeviseCreateCompanies < ActiveRecord::Migration[5.2]
 
       t.string :company_name, null: false
       t.string :company_url
+      t.text :profile
       t.text :qualification, array: true, default: []
       t.timestamps null: false
     end

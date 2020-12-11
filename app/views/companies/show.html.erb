@@ -1,7 +1,30 @@
-<h1>Companies</h1>
-<p>企業名 : <%= @company.company_name %></p>
-<p>メールアドレス : <%= @company.email %></p>
-<p>求む資格 : <%= @qualification %></p>
-<% if @company.id == current_company.id %>
-  <%= link_to "プロフィールを編集", edit_company_registration_path  %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <aside class="info">
+      <section class="user_info">
+        <% if @company.avatar.attached? %>
+          <%= image_tag @company.avatar, class: "img-circle" %>
+        <% else %>
+          <%= image_tag("avater/shutterstock_1714228723.jpg", class: "img-circle") %>
+        <% end %>
+        <h1>
+          <%= @company.company_name %>
+        </h1>
+        <% if @company.id == current_company.id %>
+         <%= link_to "プロフィールを編集", edit_company_registration_path  %>
+        <% end %>
+        <p>
+          <%= @company.company_url %>
+          <br>
+          <div class="qualification">
+            求める資格:<br> <%= @qualification %>
+          </div>
+          <br>
+          <div class="profile">
+          <%= @company.profile  %>
+          </div>
+        </p>
+      </section>
+    </aside>
+  </div>
+</div>

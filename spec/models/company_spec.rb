@@ -13,6 +13,7 @@ RSpec.describe Company, type: :model do
     expect(build(:company, company_name: "a" * 31)).not_to be_valid
     expect(build(:company, email: "a" * 31)).not_to be_valid
     expect(build(:company, password: "a" * 5)).not_to be_valid
+    expect(build(:company, profile: "a" * 51)).not_to be_valid
   end
 
   it "メールアドレスがなければ登録できない" do
