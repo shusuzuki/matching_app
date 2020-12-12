@@ -326,7 +326,7 @@ h1 {
   width: 200px;
   float: left;
   margin-right: 30px;
-  margin-top: 25px;
+  margin-top: 30px;
 }
 
 aside {
@@ -359,7 +359,7 @@ aside {
 }
 
 .profile{
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 @media screen and (max-width: 767px){
@@ -368,5 +368,26 @@ aside {
   }
   .profile{
     width: 200px;
+  }
+}
+
+/* index */
+
+.img-list{
+  height: 75px;
+  width: 75px;
+}
+
+.companies, .users{
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+  a{
+    color: #111111;
+    font-size: large;
   }
 }

@@ -10,6 +10,6 @@ devise_for :users, controllers: {
   registrations: 'users/registrations'
 }
   root 'static_pages#home'
-  resources :users, only: [:show]
-  resources :companies, only: [:show]
+  resources :users, only: [:index, :show]
+  resources :companies, only: [:index, :show]
 end

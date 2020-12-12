@@ -23,4 +23,17 @@ RSpec.describe "Companies", type: :request do
       expect(response.body).to include company.qualification.join("/")
     end
   end
+  describe "GET /index" do
+    it 'リクエストが成功すること' do
+      sign_in company
+      get users_path
+      expect(response).to have_http_status(200)
+    end
+
+    it "indexページが表示されること" do
+      sign_in company
+      get users_path
+      expect(response).to render_template :index
+    end
+  end
 end

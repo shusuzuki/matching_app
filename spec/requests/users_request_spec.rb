@@ -24,4 +24,17 @@ RSpec.describe "Users", type: :request do
       expect(response.body).to include user.sex
     end
   end
+  describe "GET /index" do
+    it 'リクエストが成功すること' do
+      sign_in user
+      get companies_path
+      expect(response).to have_http_status(200)
+    end
+
+    it "indexページが表示されること" do
+      sign_in user
+      get companies_path
+      expect(response).to render_template :index
+    end
+  end
 end

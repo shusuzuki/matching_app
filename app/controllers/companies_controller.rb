@@ -1,8 +1,17 @@
 class CompaniesController < ApplicationController
-  before_action :authenticate_company!, only: [:show]
+  def index
+    @companies = Company.all
+    unless user_signed_in?
+      render template: "static_pages/home"
+    end
+  end
+
   def show
     @company = Company.find(params[:id])
     @qualification = @company.qualification.join("/")
+    unless company_signed_in? || user_signed_in?
+      render template: "static_pages/home"
+    end
   end
 
   private

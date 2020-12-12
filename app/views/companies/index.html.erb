@@ -1,0 +1,15 @@
+<h1>企業一覧</h1>
+<div class="container">
+  <ul class="companies">
+    <% @companies.each do |company| %>
+      <li>
+        <% if company.avatar.attached? %>
+          <%= image_tag company.avatar, class: "img-list" %>
+        <% else %>
+          <%= image_tag("avater/shutterstock_1714228723.jpg", class: "img-list") %>
+        <% end %>
+        <%= link_to company.company_name, company %>
+      </li>
+    <% end %>
+  </ul>
+</div>
