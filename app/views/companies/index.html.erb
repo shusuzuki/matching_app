@@ -1,8 +1,26 @@
-<h1>企業一覧</h1>
 <div class="container">
+  <div class="search_fild">
+    <%= search_form_for @q do |f| %>
+      <%= f.label :qualification, "保有資格とマッチする企業(複数可)" %><br />
+      <%= f.check_box :qualification_cont_all , {multiple: true}, "第一種電気工事士",nil %>
+      <%= f.label :qualification, "第一種電気工事士" %>
+      <%= f.check_box :qualification_cont_all , {multiple: true}, "第二種電気工事士",nil %>
+      <%= f.label :qualification, "第二種電気工事士" %>
+      <%= f.check_box :qualification_cont_all , {multiple: true}, "1級電気工事施工管理技士",nil %>
+      <%= f.label :qualification, "1級電気工事施工管理技士" %><br />
+      <%= f.check_box :qualification_cont_all , {multiple: true}, "2級電気工事施工管理技士",nil %>
+      <%= f.label :qualification, "2級電気工事施工管理技士" %>
+      <%= f.check_box :qualification_cont_all , {multiple: true}, "電気主任技術者",nil %>
+      <%= f.label :qualification, "電気主任技術者" %>
+      <%= f.check_box :qualification_cont_all , {multiple: true}, "その他",nil %>
+      <%= f.label :qualification, "その他" %><br />
+      <%= f.submit "検索する" %>
+    <% end %>
+  </div>
+  <h1>企業一覧</h1>
   <ul class="companies">
     <% @companies.each do |company| %>
-      <li>
+      <li>  
         <% if company.avatar.attached? %>
           <%= image_tag company.avatar, class: "img-list" %>
         <% else %>
@@ -13,3 +31,4 @@
     <% end %>
   </ul>
 </div>
+<%= paginate @companies %>

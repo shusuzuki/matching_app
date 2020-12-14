@@ -20,9 +20,10 @@ RSpec.describe "Companies", type: :request do
       get company_path(company.id)
       expect(response.body).to include company.company_name
       expect(response.body).to include company.profile
-      expect(response.body).to include company.qualification.join("/")
+      expect(response.body).to include company.qualification
     end
   end
+
   describe "GET /index" do
     it 'リクエストが成功すること' do
       sign_in company

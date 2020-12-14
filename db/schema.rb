@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2020_12_10_064853) do
     t.string "company_name", null: false
     t.string "company_url"
     t.text "profile"
-    t.text "qualification", default: [], array: true
+    t.string "qualification"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_companies_on_email", unique: true
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2020_12_10_064853) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.text "qualification", default: [], array: true
+    t.string "qualification"
     t.text "profile"
     t.date "birth_date"
     t.integer "sex"

@@ -20,10 +20,11 @@ RSpec.describe "Users", type: :request do
       get user_path(user.id)
       expect(response.body).to include user.name
       expect(response.body).to include user.profile
-      expect(response.body).to include user.qualification.join("/")
+      expect(response.body).to include user.qualification
       expect(response.body).to include user.sex
     end
   end
+
   describe "GET /index" do
     it 'リクエストが成功すること' do
       sign_in user
