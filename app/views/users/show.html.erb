@@ -7,22 +7,55 @@
         <% else %>
           <%= image_tag("avater/shutterstock_1714228723.jpg", class: "img-circle") %>
         <% end %>
-        <h1>
-          <%= @user.name %>
-        </h1>
-        <p>
-          <%= @user.sex %>
-          <%= @birthday %>歳
-          <br>
-          <div class="qualification">
-            保有資格:<br> <%= @qualification %>
+        <h1><%= @user.name %></h1>
+        <p><%= @user.sex %><%= @birthday %>歳</P>
+        <% unless @user == current_user %>
+          <% if current_company.following?(@user) %>
+            <%= link_to 'アンフォロー', user_unfollow_path(@user.id), class: 'btn btn-primary', method: :POST %>
+          <% else %>
+            <%= link_to 'フォロー', user_follow_path(@user.id), class: 'btn btn-primary', method: :POST %>
+          <% end %>
+        <% end %>
+        <% if user_signed_in? %>
+          <div class="stats">
+            <a href="<%= following_user_path %>">
+              <strong id="follower" class="stat">
+                <%= @user.follower.count %>
+              </strong>
+              フォロー中
+            </a>
+            <a href="<%= following_user_path %>">
+              <strong id="follower" class="stat">
+                <%= @user.followed.count %>
+              </strong>
+              フォロワー
+            </a>
           </div>
-          <br>
+        <% end %>
+        <p>
+          <div class="qualification">
+            保有資格:<br><%= @qualification %>
+          </div><br>
           <div class="profile">
-          <%= @user.profile  %>
+            <%= @user.profile  %>
           </div>
         </P>
       </section>
     </aside>
   </div>
+  <% if user_signed_in? %>
+  <h1>マッチング</h1>
+    <ul class="matchers">
+      <% @matchers.each do |company| %>
+        <li>
+          <% if company.avatar.attached? %>
+            <%= image_tag company.avatar, class: "img-list" %>
+          <% else %>
+            <%= image_tag("avater/shutterstock_1714228723.jpg", class: "img-list") %>
+          <% end %>
+          <%= link_to company.company_name, company %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>

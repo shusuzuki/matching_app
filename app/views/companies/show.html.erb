@@ -7,21 +7,55 @@
         <% else %>
           <%= image_tag("avater/shutterstock_1714228723.jpg", class: "img-circle") %>
         <% end %>
-        <h1>
-          <%= @company.company_name %>
-        </h1>
-        <p>
-          <%= @company.company_url %>
-          <br>
-          <div class="qualification">
-            求める資格:<br> <%= @qualification %>
+        <h1><%= @company.company_name %></h1>
+        <a><%= @company.company_url %></a></br>
+        <% unless @company == current_company %>
+          <% if current_user.following?(@company) %>
+            <%= link_to 'アンフォロー', company_unfollow_path(@company.id), class: 'btn btn-primary', method: :POST %>
+          <% else %>
+            <%= link_to 'フォロー', company_follow_path(@company.id), class: 'btn btn-primary', method: :POST %>
+          <% end %>
+        <% end %>
+        <% if company_signed_in? %>
+          <div class="stats">
+            <a href="<%= following_company_path %>">
+              <strong id="follower" class="stat">
+                <%= @company.follower.count %>
+              </strong>
+              フォロー中
+            </a>
+            <a href="<%= followers_company_path %>">
+              <strong id="follower" class="stat">
+                <%= @company.followed.count %>
+              </strong>
+              フォロワー
+            </a>
           </div>
-          <br>
+        <% end %>
+        <p>
+          <div class="qualification">
+            求める資格:<br><%= @qualification %>
+          </div><br>
           <div class="profile">
-          <%= @company.profile  %>
+            <%= @company.profile %>
           </div>
         </p>
       </section>
     </aside>
   </div>
+  <% if company_signed_in? %>
+    <h1>マッチング</h1>
+    <ul class="matchers">
+      <% @matchers.each do |user| %>
+        <li>
+          <% if user.avatar.attached? %>
+            <%= image_tag user.avatar, class: "img-list" %>
+          <% else %>
+            <%= image_tag("avater/shutterstock_1714228723.jpg", class: "img-list") %>
+          <% end %>
+          <%= link_to user.name, user %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>

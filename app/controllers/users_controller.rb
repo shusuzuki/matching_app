@@ -11,11 +11,26 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @qualification = @user.qualification.gsub(/"/) { '' }.delete("[]")
+    @matchers = @user.matchers
     birthday = Happybirthday.born_on(@user.birth_date)
     @birthday = birthday.age.years_old
     unless company_signed_in? || user_signed_in?
       render template: "static_pages/home"
     end
+  end
+
+  def following
+    @title = "フォロー中"
+    @user  = User.find(params[:id])
+    @users = @user.following.page(params[:page]).per(10)
+    render 'user_follow'
+  end
+
+  def followers
+    @title = "フォロワー"
+    @user  = User.find(params[:id])
+    @users = @user.followers.page(params[:page]).per(10)
+    render 'user_follow'
   end
 
   private

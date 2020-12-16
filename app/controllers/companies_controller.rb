@@ -10,9 +10,24 @@ class CompaniesController < ApplicationController
   def show
     @company = Company.find(params[:id])
     @qualification = @company.qualification.gsub(/"/) { '' }.delete("[]")
+    @matchers = @company.matchers
     unless company_signed_in? || user_signed_in?
       render template: "static_pages/home"
     end
+  end
+
+  def following
+    @title = "フォロー中"
+    @company = Company.find(params[:id])
+    @companies = @company.following.page(params[:page]).per(10)
+    render 'company_follow'
+  end
+
+  def followers
+    @title = "フォロワー"
+    @company = Company.find(params[:id])
+    @companies = @company.followers.page(params[:page]).per(10)
+    render 'company_follow'
   end
 
   private

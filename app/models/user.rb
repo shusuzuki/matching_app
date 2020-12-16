@@ -10,6 +10,26 @@ class User < ApplicationRecord
   validates :password, confirmation: true, length: { minimum: 6, allow_blank: true }
   validates :profile, length: { maximum: 50 }
   has_one_attached :avatar
+  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :following, through: :follower, source: :followed
+  has_many :followed, class_name: "Associate", foreign_key: "followed_id", dependent: :destroy
+  has_many :followers, through: :followed, source: :follower
+
+  def follow(user_id)
+    follower.create(followed_id: user_id)
+  end
+
+  def unfollow(user_id)
+    follower.find_by(followed_id: user_id).destroy
+  end
+
+  def following?(user)
+    following.include?(user)
+  end
+
+  def matchers
+    following & followers
+  end
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

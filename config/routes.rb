@@ -9,7 +9,24 @@ devise_for :users, controllers: {
   passwords:     'users/passwords',
   registrations: 'users/registrations'
 }
+
   root 'static_pages#home'
   resources :users, only: [:index, :show]
   resources :companies, only: [:index, :show]
+  post 'company/follow/:id' => 'relationships#follow', as: 'company_follow'
+  post 'company/unfollow/:id' => 'relationships#unfollow', as: 'company_unfollow'
+  post 'user/follow/:id' => 'associates#follow', as: 'user_follow'
+  post 'user/unfollow/:id' => 'associates#unfollow', as: 'user_unfollow'
+
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
+  resources :companies do
+    member do
+      get :following, :followers
+    end
+  end
 end
