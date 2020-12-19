@@ -1,16 +1,20 @@
 Rails.application.routes.draw do
+  root 'static_pages#home'
+  resources :rooms, :only => [:show, :create] do
+    resources :messages, :only => [:create]
+  end
+  
   devise_for :companies, controllers: {
   sessions:      'companies/sessions',
   passwords:     'companies/passwords',
   registrations: 'companies/registrations'
 }
-devise_for :users, controllers: {
+  devise_for :users, controllers: {
   sessions:      'users/sessions',
   passwords:     'users/passwords',
   registrations: 'users/registrations'
 }
 
-  root 'static_pages#home'
   resources :users, only: [:index, :show]
   resources :companies, only: [:index, :show]
   post 'company/follow/:id' => 'relationships#follow', as: 'company_follow'

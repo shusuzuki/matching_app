@@ -1,0 +1,64 @@
+<div class="row">
+  <div id="chats">
+    <% if user_signed_in? %>
+      <h1><%= @company.company_name %>とのトークルーム</h1>
+      <% @messages.each do |m| %>
+        <!-- メッセージがUserによるものだったら -->
+        <% if m.is_user %>
+          <div class="mycomment">
+            <p><%= m.content %></p>
+          </div>
+        <!-- メッセージがcompanyによるものだったら -->
+        <% else %>
+          <!-- メッセージを左に寄せる -->
+          <div class="fukidasi">
+            <div class="faceicon">
+              <% if @company.avatar.attached? %>
+                <%= image_tag company.avatar, class: "img-list" %>
+              <% else %>
+                <%= image_tag("avater/shutterstock_1714228723.jpg", class: "img-list") %>
+              <% end %>
+            </div>
+            <div class="chatting">
+              <div class="says">
+                <p><%= m.content %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% elsif company_signed_in?%>
+      <h1><%= @user.name %>とのトークルーム</h1>
+      <% @messages.each do |m| %>
+        <!-- メッセージがUserによるものだったら -->
+        <% if m.is_user %>
+          <div class="fukidasi">
+            <div class="faceicon">
+              <% if @user.avatar.attached? %>
+                <%= image_tag user.avatar, class: "img-list" %>
+              <% else %>
+                <%= image_tag("avater/shutterstock_1714228723.jpg", class: "img-list") %>
+              <% end %>
+            </div>
+            <div class="chatting">
+              <div class="says">
+                <p><%= m.content %></p>
+              </div>
+            </div>
+          </div>
+          <!-- メッセージがcompanyによるものだったら -->
+        <% else %>
+          <div class="mycomment">
+            <p><%= m.content %></p>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= form_for [@room, @message] do |f| %>
+      <div class="message-field" >
+        <%= f.text_field :content %>
+        <%= f.submit "メッセージを送る"%>
+      </div>
+    <% end %>
+  </div>
+</div>

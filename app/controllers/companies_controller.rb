@@ -11,6 +11,13 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     @qualification = @company.qualification.gsub(/"/) { '' }.delete("[]")
     @matchers = @company.matchers
+    if company_signed_in?
+      rooms = current_company.rooms
+      @user_ids = []
+      rooms.each do |r|
+        @user_ids << r.user_id
+      end
+    end
     unless company_signed_in? || user_signed_in?
       render template: "static_pages/home"
     end

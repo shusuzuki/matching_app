@@ -14,6 +14,13 @@ class UsersController < ApplicationController
     @matchers = @user.matchers
     birthday = Happybirthday.born_on(@user.birth_date)
     @birthday = birthday.age.years_old
+    if user_signed_in?
+      rooms = current_user.rooms
+      @company_ids = []
+      rooms.each do |r|
+        @company_ids << r.company_id
+      end
+    end
     unless company_signed_in? || user_signed_in?
       render template: "static_pages/home"
     end

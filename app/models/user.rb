@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :following, through: :follower, source: :followed
   has_many :followed, class_name: "Associate", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :followed, source: :follower
+  has_many :rooms
 
   def follow(user_id)
     follower.create(followed_id: user_id)

@@ -44,7 +44,7 @@
     </aside>
   </div>
   <% if company_signed_in? %>
-    <h1>マッチング</h1>
+    <h1>マッチングした電気工事士</h1>
     <ul class="matchers">
       <% @matchers.each do |user| %>
         <li>
@@ -53,7 +53,14 @@
           <% else %>
             <%= image_tag("avater/shutterstock_1714228723.jpg", class: "img-list") %>
           <% end %>
-          <%= link_to user.name, user %>
+          <% if @user_ids.include?(user.id) %>
+            <%= link_to "#{user.name}とのトークルーム", room_path(current_company.rooms.find_by(user_id: user.id)) %>
+          <% else %>
+            <%= form_for Room.new do |f| %>
+              <%= f.hidden_field :user_id, :value => user.id %>
+              <%= f.submit "メッセージを送る" %>
+            <% end %>
+          <% end %>
         </li>
       <% end %>
     </ul>

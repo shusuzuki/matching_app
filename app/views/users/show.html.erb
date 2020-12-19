@@ -24,7 +24,7 @@
               </strong>
               フォロー中
             </a>
-            <a href="<%= following_user_path %>">
+            <a href="<%= followers_user_path %>">
               <strong id="follower" class="stat">
                 <%= @user.followed.count %>
               </strong>
@@ -44,7 +44,7 @@
     </aside>
   </div>
   <% if user_signed_in? %>
-  <h1>マッチング</h1>
+  <h1>マッチングした企業</h1>
     <ul class="matchers">
       <% @matchers.each do |company| %>
         <li>
@@ -53,7 +53,14 @@
           <% else %>
             <%= image_tag("avater/shutterstock_1714228723.jpg", class: "img-list") %>
           <% end %>
-          <%= link_to company.company_name, company %>
+          <% if @company_ids.include?(company.id) %>
+            <%= link_to "#{company.company_name}とのトークルーム", room_path(current_user.rooms.find_by(company_id: company.id)) %>
+          <% else %>
+            <%= form_for Room.new do |f| %>
+              <%= f.hidden_field :company_id, :value => company.id %>
+              <%= f.submit "メッセージを送る" %>
+            <% end %>
+          <% end %>
         </li>
       <% end %>
     </ul>

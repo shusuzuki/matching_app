@@ -13,6 +13,7 @@ class Company < ApplicationRecord
   has_many :followers, through: :followed, source: :follower
   has_many :follower, class_name: "Associate", foreign_key: "follower_id", dependent: :destroy
   has_many :following, through: :follower, source: :followed
+  has_many :rooms
 
   def follow(company_id)
     follower.create(followed_id: company_id)
