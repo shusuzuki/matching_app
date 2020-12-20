@@ -5,7 +5,7 @@
 
 body {
   padding-top: 50px;
-  background: #fffcfc;
+  background: #f3f3f3;
 }
 
 section {
@@ -176,6 +176,7 @@ footer {
 
 .box-inner {
   padding: 20px 26px;
+  background: white;
 }
 
 h1 {
@@ -331,7 +332,9 @@ h1 {
 
 aside {
   section.user_info {
-    margin-top: 20px;
+    margin-top: 30px;
+    background: white;
+    border-radius: 15px;
   }
   section {
     padding: 10px 0;
@@ -361,21 +364,18 @@ aside {
 .qualification{
   width: 650px;
   margin-top: 40px;
+  margin-left: 20px;
   display: flex;
 }
 
 .profile{
   margin-top: 0px;
+  margin-left: 20px;
 }
 
 .btn-primary{
   width: 300px;
   margin-top: 35px;
-}
-
-.user_info{
-  margin-left: 50px;
-  margin-right: 50px;
 }
 
 .stats {
@@ -401,6 +401,13 @@ aside {
   strong {
     display: block;
   }
+}
+
+.matching{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background: white;
+  border-radius: 15px;
 }
 
 @media screen and (max-width: 767px){
@@ -430,6 +437,12 @@ aside {
   width: 75px;
 }
 
+.list{
+  background: white;
+  border-radius: 15px;
+  margin-top: 30px;
+}
+
 .companies, .users, .matchers{
   list-style: none;
   margin: 0;
@@ -445,9 +458,10 @@ aside {
 }
 
 .search_fild{
-  margin-top: 20px;
+  margin-top: 30px;
   line-height: 25px;
   border: 2px solid;
+  background: white;
 }
 
 /* chats */
@@ -537,4 +551,16 @@ aside {
 
 .message-field{
   text-align:center;
+}
+
+/* flash */
+
+.notice {
+  color: white;
+  background-color: blue;
+}
+
+.alert {
+  color: white;
+  background-color: red;
 }

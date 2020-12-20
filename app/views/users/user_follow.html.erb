@@ -1,18 +1,21 @@
+<% provide(:title, @title) %>
 <div class="container">
-  <h1><%= @title %></h1>
-  <% if @users.any? %>
-    <ul class="companies">
-      <% @users.each do |company| %>
-        <li>
-          <% if company.avatar.attached? %>
-            <%= image_tag company.avatar, class: "img-list" %>
-          <% else %>
-            <%= image_tag("avater/shutterstock_1714228723.jpg", class: "img-list") %>
-          <% end %>
-          <%= link_to company.company_name, company %>
-        </li>
-      <% end %>
-    </ul>
-    <%= paginate @users %>
-  <% end %>
+  <div class="matching">
+    <h1><%= @title %></h1>
+    <% if @users.any? %>
+      <ul class="companies">
+        <% @users.each do |company| %>
+          <li>
+            <% if company.avatar.attached? %>
+              <%= image_tag company.avatar, class: "img-list" %>
+            <% else %>
+              <%= image_tag("avater/shutterstock_1714228723.jpg", class: "img-list") %>
+            <% end %>
+            <%= link_to company.company_name, company %>
+          </li>
+        <% end %>
+      </ul>
+      <%= paginate @users %>
+    <% end %>
+  </div>
 </div>

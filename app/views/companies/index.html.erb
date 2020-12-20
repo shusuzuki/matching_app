@@ -1,3 +1,4 @@
+<% provide(:title, "企業一覧") %>
 <div class="container">
   <div class="search_fild">
     <%= search_form_for @q do |f| %>
@@ -17,18 +18,20 @@
       <%= f.submit "検索する" %>
     <% end %>
   </div>
-  <h1>企業一覧</h1>
-  <ul class="companies">
-    <% @companies.each do |company| %>
-      <li>  
-        <% if company.avatar.attached? %>
-          <%= image_tag company.avatar, class: "img-list" %>
-        <% else %>
-          <%= image_tag("avater/shutterstock_1714228723.jpg", class: "img-list") %>
-        <% end %>
-        <%= link_to company.company_name, company %>
-      </li>
-    <% end %>
-  </ul>
+  <div class="list">
+    <h1>企業一覧</h1>
+    <ul class="companies">
+      <% @companies.each do |company| %>
+        <li>  
+          <% if company.avatar.attached? %>
+            <%= image_tag company.avatar, class: "img-list" %>
+          <% else %>
+            <%= image_tag("avater/shutterstock_1714228723.jpg", class: "img-list") %>
+          <% end %>
+          <%= link_to company.company_name, company %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
 <%= paginate @companies %>

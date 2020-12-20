@@ -1,3 +1,4 @@
+<% provide(:title, "マイページ") %>
 <div class="container">
   <div class="row">
     <aside class="info">
@@ -41,28 +42,30 @@
           </div>
         </P>
       </section>
+      <div class="matching">
+        <% if user_signed_in? %>
+          <h1>マッチングした企業</h1>
+          <ul class="matchers">
+            <% @matchers.each do |company| %>
+              <li>
+                <% if company.avatar.attached? %>
+                  <%= image_tag company.avatar, class: "img-list" %>
+                <% else %>
+                  <%= image_tag("avater/shutterstock_1714228723.jpg", class: "img-list") %>
+                <% end %>
+                <% if @company_ids.include?(company.id) %>
+                  <%= link_to "#{company.company_name}とのトークルーム", room_path(current_user.rooms.find_by(company_id: company.id)) %>
+                <% else %>
+                  <%= form_for Room.new do |f| %>
+                    <%= f.hidden_field :company_id, :value => company.id %>
+                    <%= f.submit "メッセージを送る" %>
+                  <% end %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
     </aside>
   </div>
-  <% if user_signed_in? %>
-  <h1>マッチングした企業</h1>
-    <ul class="matchers">
-      <% @matchers.each do |company| %>
-        <li>
-          <% if company.avatar.attached? %>
-            <%= image_tag company.avatar, class: "img-list" %>
-          <% else %>
-            <%= image_tag("avater/shutterstock_1714228723.jpg", class: "img-list") %>
-          <% end %>
-          <% if @company_ids.include?(company.id) %>
-            <%= link_to "#{company.company_name}とのトークルーム", room_path(current_user.rooms.find_by(company_id: company.id)) %>
-          <% else %>
-            <%= form_for Room.new do |f| %>
-              <%= f.hidden_field :company_id, :value => company.id %>
-              <%= f.submit "メッセージを送る" %>
-            <% end %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
 </div>
