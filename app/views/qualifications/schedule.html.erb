@@ -1,0 +1,37 @@
+<% provide(:title, "試験日程") %>
+<div class="container">
+  <h1>試験日程</h1>
+  <table border="1">
+    <tr>
+      <th>資格</th><th>日程</th>
+    </tr>
+    <tr>
+      <td><%= link_to '第一種電気工事士', 'https://www.shiken.or.jp/' %></td>
+      <td><%= @elements[27].inner_text %></td>
+    </tr>
+    <tr>
+      <td><%= link_to '第二種電気工事士', 'https://www.shiken.or.jp/' %></td>
+      <td><%= @elements[22].inner_text %></td>
+    </tr>
+    <tr>
+      <td><%= link_to '1級電気工事施工管理技士', 'https://www.fcip-shiken.jp/' %></td>
+      <td><%= @elements[37].inner_text %></td>
+    </tr>
+    <tr>
+      <td><%= link_to '2級電気工事施工管理技士', 'https://www.fcip-shiken.jp/' %></td>
+      <td><%= @elements[42].inner_text %></td>
+    </tr>
+    <tr>
+      <td><%= link_to '第3種電気主任技術者', 'https://www.shiken.or.jp/' %></td>
+      <td><%= @elements[7].inner_text %></td>
+    </tr>
+    <tr>
+      <td><%= link_to '第2種電気主任技術者', 'https://www.shiken.or.jp/' %></td>
+      <td><%= @elements[12].inner_text %></td>
+    </tr>
+    <tr>
+      <td><%= link_to '第1種電気主任技術者', 'https://www.shiken.or.jp/' %></td>
+      <td><%= @elements[17].inner_text %></td>
+    </tr>
+  </table>
+</div>

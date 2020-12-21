@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
+  get  '/schedule',    to: 'qualifications#schedule'
   resources :rooms, :only => [:show, :create] do
     resources :messages, :only => [:create]
   end

@@ -22,6 +22,13 @@ RSpec.describe "Companies", type: :request do
       expect(response.body).to include company.profile
       expect(response.body).to include company.qualification
     end
+
+    context "ログインしていないユーザー" do
+      it "トップページへ飛ぶこと" do
+        get company_path(company.id)
+        expect(response).to render_template :home
+      end
+    end
   end
 
   describe "GET /index" do
@@ -35,6 +42,13 @@ RSpec.describe "Companies", type: :request do
       sign_in company
       get users_path
       expect(response).to render_template :index
+    end
+
+    context "ログインしていないユーザー" do
+      it "トップページへ飛ぶこと" do
+        get users_path
+        expect(response).to render_template :home
+      end
     end
   end
 end

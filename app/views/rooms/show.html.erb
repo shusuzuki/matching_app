@@ -57,7 +57,7 @@
     <% end %>
     <%= form_for [@room, @message] do |f| %>
       <div class="message-field" >
-        <%= f.text_field :content %>
+        <%= f.text_field :content, size: 40 %>
         <%= f.submit "メッセージを送る"%>
       </div>
     <% end %>

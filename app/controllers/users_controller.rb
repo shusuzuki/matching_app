@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:following, :followers]
   require 'happybirthday'
   def index
     @q = User.ransack(params[:q])

@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  before_action :authenticate_company!, only: [:following, :followers]
   def index
     @q = Company.ransack(params[:q])
     @companies = @q.result(distinct: true).page(params[:page]).per(10)

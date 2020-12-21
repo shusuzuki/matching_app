@@ -57,12 +57,8 @@ RSpec.describe "devise_companies", type: :request do
 
     context "ログインに失敗した時" do
       it "エラーメッセージが表示されていること" do
-        pending
-        get new_company_session_path
-        expect(response).to have_http_status(:success)
-        sign_in invalid_company
-        expect(response).to have_http_status(:success)
-        get company_path(company.id)
+        post new_company_session_path, params: { company: invalid_company }
+        expect(response.body).to include 'メールアドレスまたはパスワードが違います。'
       end
     end
   end

@@ -1,6 +1,8 @@
 RSpec.describe "Users", type: :request do
   let(:user) { create(:user) }
   let(:user_params) { attributes_for(:user) }
+  let(:company) { create(:company) }
+  let(:company_params) { attributes_for(:company) }
 
   describe "GET /show" do
     it 'リクエストが成功すること' do
@@ -23,6 +25,13 @@ RSpec.describe "Users", type: :request do
       expect(response.body).to include user.qualification
       expect(response.body).to include user.sex
     end
+
+    context "ログインしていないユーザー" do
+      it "トップページへ飛ぶこと" do
+        get user_path(user.id)
+        expect(response).to render_template :home
+      end
+    end
   end
 
   describe "GET /index" do
@@ -36,6 +45,13 @@ RSpec.describe "Users", type: :request do
       sign_in user
       get companies_path
       expect(response).to render_template :index
+    end
+
+    context "ログインしていないユーザー" do
+      it "トップページへ飛ぶこと" do
+        get companies_path
+        expect(response).to render_template :home
+      end
     end
   end
 end

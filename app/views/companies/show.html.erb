@@ -56,10 +56,13 @@
                 <% if @user_ids.include?(user.id) %>
                   <%= link_to "#{user.name}とのトークルーム", room_path(current_company.rooms.find_by(user_id: user.id)) %>
                 <% else %>
-                  <%= form_for Room.new do |f| %>
-                    <%= f.hidden_field :user_id, :value => user.id %>
-                    <%= f.submit "メッセージを送る" %>
-                  <% end %>
+                  <div style="display:inline-flex">
+                    <%= form_for Room.new do |f| %>
+                      <%= link_to user.name, user %>
+                      <%= f.hidden_field :user_id, :value => user.id %>
+                      <%= f.submit "メッセージを送る" %>
+                    <% end %>
+                  </div>
                 <% end %>
               </li>
             <% end %>
