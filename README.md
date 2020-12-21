@@ -1,24 +1,39 @@
-# README
+# MATCHING-AC
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+電気工事士・企業が資格を通じてマッチング出来るサイトです。
+就活用のポートフォリオです。
 
-Things you may want to cover:
+# リンク
 
-* Ruby version
+- 本アプリ :https://www.matching-ac.tk/
 
-* System dependencies
+# 使用技術
 
-* Configuration
+- Ruby 2.5.8
 
-* Database creation
+- Ruby on Rails 5.2.4
 
-* Database initialization
+- PostgreSQL
 
-* How to run the test suite
+- AWS
+ - EC2/ALB
+ - RDS for PostgreSQL
+ - Certificate Manager(ACM)
 
-* Services (job queues, cache servers, search engines, etc.)
+- Docker
+ - webコンテナ「nginx」
+ - appコンテナ「puma rails」
+ - dbコンテナ「PostgreSQL」
 
-* Deployment instructions
+- rubocop
 
-* ...
+- RSpec
+
+# 機能一覧
+
+- ユーザー登録、ログイン機能全般(devise)
+- フォロー機能
+- ユーザー検索機能(ransack)
+- メッセージ機能
+- 他サイトからHTML情報取得(Mechanize)
+- ページネーション機能(kaminari)
