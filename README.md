@@ -19,6 +19,7 @@
  - EC2/ALB
  - RDS for PostgreSQL
  - Certificate Manager(ACM)
+ - S3
 
 - Docker
  - webコンテナ「nginx」

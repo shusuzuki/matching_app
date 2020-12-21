@@ -3,9 +3,6 @@
   <div class="box-inner">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <h1>法人向けログイン</h1>
-      <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
-      <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
-      <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
       <div class="box-email">
         <%= f.label :email, "メールアドレス" %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -28,5 +25,12 @@
       <p><span>---------</span> アカウントをお持ちではないですか？ <span>---------</span></p>
       <%= link_to "アカウント作成", new_company_registration_path %>
     </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="box-test">
+        <%= f.hidden_field :email, value: "company@test.com" %>
+        <%= f.hidden_field :password, value: "password" %>
+        <%= f.submit "テストログイン" %>
+      </div>
+    <% end %>
   </div>
 </div>

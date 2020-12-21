@@ -37,10 +37,4 @@ class CompaniesController < ApplicationController
     @companies = @company.followers.page(params[:page]).per(10)
     render 'company_follow'
   end
-
-  private
-
-  def company_params
-    params.require(:user).permit(:company_name, :email, :qualification)
-  end
 end

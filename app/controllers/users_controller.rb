@@ -40,10 +40,4 @@ class UsersController < ApplicationController
     @users = @user.followers.page(params[:page]).per(10)
     render 'user_follow'
   end
-
-  private
-
-  def user_params
-    params.require(:user).permit(:name, :email, :qualification)
-  end
 end

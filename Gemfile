@@ -21,6 +21,7 @@ gem 'mini_magick'
 gem 'kaminari'
 gem 'ransack'
 gem 'mechanize'
+gem 'aws-sdk-s3', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
