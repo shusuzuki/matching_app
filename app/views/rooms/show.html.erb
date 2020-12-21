@@ -15,7 +15,7 @@
           <div class="fukidasi">
             <div class="faceicon">
               <% if @company.avatar.attached? %>
-                <%= image_tag company.avatar, class: "img-list" %>
+                <%= image_tag @company.avatar, class: "img-list" %>
               <% else %>
                 <%= image_tag("avater/shutterstock_1714228723.jpg", class: "img-list") %>
               <% end %>
@@ -36,7 +36,7 @@
           <div class="fukidasi">
             <div class="faceicon">
               <% if @user.avatar.attached? %>
-                <%= image_tag user.avatar, class: "img-list" %>
+                <%= image_tag @user.avatar, class: "img-list" %>
               <% else %>
                 <%= image_tag("avater/shutterstock_1714228723.jpg", class: "img-list") %>
               <% end %>
