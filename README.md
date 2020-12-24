@@ -6,7 +6,7 @@
 
 # リンク
 
-- 本アプリ :https://www.matching-ac.tk/
+- 本アプリ :https://www.matching-ac.com/
 
 # 使用技術
 
