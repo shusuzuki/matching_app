@@ -56,6 +56,9 @@ ActiveRecord::Schema.define(version: 2020_12_18_173941) do
     t.string "company_url"
     t.text "profile"
     t.string "qualification"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_companies_on_email", unique: true

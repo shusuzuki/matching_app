@@ -22,6 +22,8 @@ gem 'kaminari'
 gem 'ransack'
 gem 'mechanize'
 gem 'aws-sdk-s3', require: false
+gem "geocoder"
+gem "dotenv-rails"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

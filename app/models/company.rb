@@ -14,6 +14,8 @@ class Company < ApplicationRecord
   has_many :follower, class_name: "Associate", foreign_key: "follower_id", dependent: :destroy
   has_many :following, through: :follower, source: :followed
   has_many :rooms
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   def follow(company_id)
     follower.create(followed_id: company_id)

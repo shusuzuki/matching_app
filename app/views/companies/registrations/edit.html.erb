@@ -24,6 +24,10 @@
         <%= f.label :プロフィール %><br />
         <%= f.text_area :profile, size: "46x5" %>
       </div>
+      <div class="box-profile">
+        <%= f.label :住所 %><br />
+        <%= f.text_field :address %>
+      </div>
       <div class="box-qualification">
         <%= f.label :qualification, "求める資格は？(複数可)" %><br />
         <% qualification = ["第一種電気工事士","第二種電気工事士","1級電気工事施工管理技士","2級電気工事施工管理技士",

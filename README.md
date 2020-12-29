@@ -38,5 +38,6 @@
 - ユーザー検索機能(ransack)
 - メッセージ機能
 - 他サイトからHTML情報取得(Mechanize)
+- 登録した住所に紐付いたGoogleMapの表示(GoogleAPI)
 - ページネーション機能(kaminari)
 - レスポンシブデザイン

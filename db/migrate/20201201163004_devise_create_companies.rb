@@ -36,6 +36,9 @@ class DeviseCreateCompanies < ActiveRecord::Migration[5.2]
       t.string :company_url
       t.text :profile
       t.string :qualification
+      t.string :address
+      t.float :latitude
+      t.float :longitude
       t.timestamps null: false
     end
 
